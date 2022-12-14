@@ -13,3 +13,4 @@
 .pnp.cjs
 
 dist
+node_modules
