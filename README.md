@@ -36,10 +36,10 @@ const merkleBlockProof = await client.transaction.merkleBlockProof(txId)
 const merkleProof = await client.transaction.merkleProof(txId)
 
 // GET spending status of a transaction output
-const spendingStatus = await client.transaction.outputSpend(txId, voutIndex)
+const spendingStatus = await client.transaction.outputSpend(txId, vout)
 
 // GET spending status of all transaction output
-const spendingStatus = await client.transaction.outputsSpend(txId, voutIndex)
+const spendingStatus = await client.transaction.outputsSpend(txId)
 
 // CREATE a transaction
 const tx = await client.transaction.create(hex)
