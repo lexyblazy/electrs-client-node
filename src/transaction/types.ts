@@ -10,7 +10,7 @@ export interface Transaction {
   status: TransactionStatus;
 }
 
-interface TransactionOutput {
+export interface TransactionOutput {
   scriptpubkey: string;
   scriptpubkey_asm: string;
   scriptpubkey_type: "p2pkh" | "v0_p2wpkh";
@@ -18,7 +18,7 @@ interface TransactionOutput {
   value: number;
 }
 
-interface TransactionInput {
+export interface TransactionInput {
   txid: string;
   vout: number;
   prevout: TransactionOutput;
