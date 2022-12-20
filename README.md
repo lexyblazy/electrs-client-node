@@ -44,4 +44,26 @@ const spendingStatus = await client.transaction.outputsSpend(txId)
 // CREATE a transaction
 const tx = await client.transaction.create(hex)
 
-````
+```
+
+## Addresses
+
+```ts
+
+// GET address information
+const addressInfo = await client.address.getInfo(address);
+
+// Get transaction history for the specified address/scripthash, sorted with newest first. Returns 25 transactions per page. 
+const addressTransactions = await client.address.getTransactions(address);
+  
+// More can be requested by specifying the last txid seen by the previous query.
+const moreTransactions = await client.address.getTransactions(address, lastSeenTxId)
+
+// Get unconfirmed transaction history for the specified address/scripthash.
+//Returns up to 50 transactions (no paging)
+const mempoolTxs = await client.address.getMempoolTransactions(address);
+
+
+  
+```
+
