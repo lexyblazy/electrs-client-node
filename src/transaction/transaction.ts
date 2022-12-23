@@ -1,6 +1,6 @@
-import apisauce, { ApisauceInstance } from "apisauce";
-import { Config } from "../types";
+import { ApisauceInstance } from "apisauce";
 import { withErrorHandler } from "../utils";
+
 import {
   Transaction,
   TransactionCreate,
@@ -12,47 +12,45 @@ import {
 export class TransactionApi {
   private api: ApisauceInstance;
 
-  constructor(config: Config) {
-    this.api = apisauce.create({
-      baseURL: `${config.ELECTRUM_SERVER_URL}/tx`,
-    });
+  constructor(apisauceInstance: ApisauceInstance) {
+    this.api = apisauceInstance;
   }
 
   async get(txId: string) {
-    return withErrorHandler(() => this.api.get<Transaction>(`/${txId}`));
+    return withErrorHandler(() => this.api.get<Transaction>(`/tx/${txId}`));
   }
 
   async status(txId: string) {
-    return withErrorHandler(() => this.api.get<TransactionStatus>(`/${txId}/status`));
+    return withErrorHandler(() => this.api.get<TransactionStatus>(`/tx/${txId}/status`));
   }
 
   async hex(txId: string) {
-    return withErrorHandler(() => this.api.get<string>(`/${txId}/hex`));
+    return withErrorHandler(() => this.api.get<string>(`/tx/${txId}/hex`));
   }
 
   async raw(txId: string) {
-    return withErrorHandler(() => this.api.get<BinaryData>(`/${txId}/raw`));
+    return withErrorHandler(() => this.api.get<BinaryData>(`/tx/${txId}/raw`));
   }
 
   async merkleBlockProof(txId: string) {
-    return withErrorHandler(() => this.api.get<string>(`/${txId}/merkleblock-proof`));
+    return withErrorHandler(() => this.api.get<string>(`/tx/${txId}/merkleblock-proof`));
   }
 
   async merkleProof(txId: string) {
-    return withErrorHandler(() => this.api.get<TransactionMerkleProof>(`/${txId}/merkle-proof`));
+    return withErrorHandler(() => this.api.get<TransactionMerkleProof>(`/tx/${txId}/merkle-proof`));
   }
 
   async outputSpend(txId: string, vout: number) {
     return withErrorHandler(() =>
-      this.api.get<TransactionOutputSpend>(`/${txId}/outspend/${vout}`)
+      this.api.get<TransactionOutputSpend>(`/tx/${txId}/outspend/${vout}`)
     );
   }
 
   async outputsSpend(txId: string) {
-    return withErrorHandler(() => this.api.get<TransactionOutputSpend[]>(`/${txId}/outspends`));
+    return withErrorHandler(() => this.api.get<TransactionOutputSpend[]>(`/tx/${txId}/outspends`));
   }
 
   async create(hex: string) {
-    return withErrorHandler(() => this.api.post<TransactionCreate>("", hex));
+    return withErrorHandler(() => this.api.post<TransactionCreate>("/tx", hex));
   }
 }
