@@ -67,3 +67,6 @@ const mempoolTxs = await client.address.getMempoolTransactions(address);
   
 ```
 
+Note: Build artifacts are committed to the repository (see `dist` folder) because the project is in active development.
+
+I'll undo this as soon the project is stable and ready to be published to npm. 
