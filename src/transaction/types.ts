@@ -53,3 +53,10 @@ export interface TransactionOutputSpend {
 export interface TransactionCreate {
   txid: string;
 }
+
+export interface Utxo {
+  txid: string;
+  vout: number;
+  status: TransactionStatus;
+  value: number;
+}

@@ -60,9 +60,15 @@ const addressTransactions = await client.address.getTransactions(address);
 const moreTransactions = await client.address.getTransactions(address, lastSeenTxId)
 
 // Get unconfirmed transaction history for the specified address/scripthash.
-//Returns up to 50 transactions (no paging)
+// Returns up to 50 transactions (no paging)
 const mempoolTxs = await client.address.getMempoolTransactions(address);
 
+// Get the list of unspent transaction outputs associated with the address
+const utxos = await client.address.getUtxo(address);
+
+// Search for addresses beginning with :prefix.
+// Returns a JSON array with up to 10 results.
+const addresses = await client.address.getByPrefix(address);
 
   
 ```

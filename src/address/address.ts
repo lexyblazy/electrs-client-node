@@ -1,5 +1,5 @@
 import { ApisauceInstance } from "apisauce";
-import { Transaction } from "../transaction";
+import { Transaction, Utxo } from "../transaction";
 import { withErrorHandler } from "../utils";
 import { AddressInfo } from "./types";
 
@@ -26,5 +26,13 @@ export class AddressApi {
 
   async getMempoolTransactions(address: string) {
     return withErrorHandler(() => this.api.get<Transaction[]>(`/address/${address}/txs/mempool`));
+  }
+
+  async getUtxo(address: string) {
+    return withErrorHandler(() => this.api.get<Utxo[]>(`/address/${address}/utxo`));
+  }
+
+  async getByPrefix(prefix: string) {
+    return withErrorHandler(() => this.api.get<AddressInfo[]>(`/address-prefix/${prefix}`));
   }
 }
