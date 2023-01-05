@@ -116,6 +116,13 @@ const mempoolTxIds = await client.mempool.getTxIds();
 const recentTxs = await client.mempool.getRecentTxs();
 ```
 
+## Fee
+
+```ts
+// GET fee-estimates
+const feeEstimate = await client.fee.getEstimate();
+```
+
 Note: Build artifacts are committed to the repository (see `dist` folder) because the project is in active development.
 
 I'll undo this as soon the project is stable and ready to be published to npm.
