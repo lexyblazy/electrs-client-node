@@ -1,6 +1,6 @@
 # electrs-client-node
 
-A NodeJS client for communicating with [Blockstream's electrs](https://github.com/Blockstream/electrs) HTTP api
+A javascript client for communicating with [Blockstream's electrs](https://github.com/Blockstream/electrs) HTTP api
 
 ```ts
 import { Client } from "electrs-client-node";
