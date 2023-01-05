@@ -1,6 +1,7 @@
 import apisauce, { ApisauceInstance } from "apisauce";
 import { AddressApi } from "./address";
 import { BlockApi } from "./block";
+import { MempoolApi } from "./mempool";
 import { TransactionApi } from "./transaction";
 import { Config } from "./types";
 
@@ -9,6 +10,7 @@ export class Client {
   transaction: TransactionApi;
   address: AddressApi;
   block: BlockApi;
+  mempool: MempoolApi;
 
   constructor(config: Config) {
     this.api = apisauce.create({
@@ -17,5 +19,6 @@ export class Client {
     this.transaction = new TransactionApi(this.api);
     this.address = new AddressApi(this.api);
     this.block = new BlockApi(this.api);
+    this.mempool = new MempoolApi(this.api);
   }
 }
