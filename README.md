@@ -103,6 +103,19 @@ const latestBlockHeight = await client.block.getLatestHeight();
 const latestBlockHash = await client.block.getLatestHash();
 ```
 
+## Mempool
+
+```ts
+// Get mempool backlog statistics.
+const mempoolStats = await client.mempool.getStats();
+
+// Get the full list of txids in the mempool as an array.
+const mempoolTxIds = await client.mempool.getTxIds();
+
+// Get a list of the last 10 transactions to enter the mempool.
+const recentTxs = await client.mempool.getRecentTxs();
+```
+
 Note: Build artifacts are committed to the repository (see `dist` folder) because the project is in active development.
 
 I'll undo this as soon the project is stable and ready to be published to npm.
