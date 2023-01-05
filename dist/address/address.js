@@ -35,5 +35,15 @@ class AddressApi {
             return (0, utils_1.withErrorHandler)(() => this.api.get(`/address/${address}/txs/mempool`));
         });
     }
+    getUtxo(address) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, utils_1.withErrorHandler)(() => this.api.get(`/address/${address}/utxo`));
+        });
+    }
+    getByPrefix(prefix) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, utils_1.withErrorHandler)(() => this.api.get(`/address-prefix/${prefix}`));
+        });
+    }
 }
 exports.AddressApi = AddressApi;

@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Client = void 0;
 const apisauce_1 = __importDefault(require("apisauce"));
 const address_1 = require("./address");
+const block_1 = require("./block");
+const mempool_1 = require("./mempool");
 const transaction_1 = require("./transaction");
 class Client {
     constructor(config) {
@@ -14,6 +16,8 @@ class Client {
         });
         this.transaction = new transaction_1.TransactionApi(this.api);
         this.address = new address_1.AddressApi(this.api);
+        this.block = new block_1.BlockApi(this.api);
+        this.mempool = new mempool_1.MempoolApi(this.api);
     }
 }
 exports.Client = Client;

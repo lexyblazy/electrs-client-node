@@ -9,16 +9,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const client_1 = require("./client");
-const main = () => __awaiter(void 0, void 0, void 0, function* () {
-    const client = new client_1.Client({
-        ELECTRUM_SERVER_URL: "http://localhost:30000",
-    });
-    const mempoolStats = yield client.mempool.getStats();
-    console.log(mempoolStats);
-    const mempoolTxIds = yield client.mempool.getTxIds();
-    console.log(mempoolTxIds);
-    const recentTxs = yield client.mempool.getRecentTxs();
-    console.log(recentTxs);
-});
-main().then(console.log).catch(console.error);
+exports.MempoolApi = void 0;
+const utils_1 = require("../utils");
+class MempoolApi {
+    constructor(apisauceInstance) {
+        this.api = apisauceInstance;
+    }
+    getStats() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, utils_1.withErrorHandler)(() => this.api.get(`/mempool`));
+        });
+    }
+    getTxIds() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, utils_1.withErrorHandler)(() => this.api.get(`/mempool/txids`));
+        });
+    }
+    getRecentTxs() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, utils_1.withErrorHandler)(() => this.api.get(`/mempool/recent`));
+        });
+    }
+}
+exports.MempoolApi = MempoolApi;
