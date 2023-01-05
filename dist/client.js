@@ -7,6 +7,7 @@ exports.Client = void 0;
 const apisauce_1 = __importDefault(require("apisauce"));
 const address_1 = require("./address");
 const block_1 = require("./block");
+const fee_1 = require("./fee");
 const mempool_1 = require("./mempool");
 const transaction_1 = require("./transaction");
 class Client {
@@ -18,6 +19,7 @@ class Client {
         this.address = new address_1.AddressApi(this.api);
         this.block = new block_1.BlockApi(this.api);
         this.mempool = new mempool_1.MempoolApi(this.api);
+        this.fee = new fee_1.FeeApi(this.api);
     }
 }
 exports.Client = Client;

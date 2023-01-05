@@ -9,12 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const client_1 = require("./client");
-const main = () => __awaiter(void 0, void 0, void 0, function* () {
-    const client = new client_1.Client({
-        ELECTRUM_SERVER_URL: "http://localhost:30000",
-    });
-    const feeEstimate = yield client.fee.getEstimate();
-    console.log(feeEstimate);
-});
-main().then(console.log).catch(console.error);
+exports.FeeApi = void 0;
+const utils_1 = require("../utils");
+class FeeApi {
+    constructor(apisauceInstance) {
+        this.api = apisauceInstance;
+    }
+    getEstimate() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (0, utils_1.withErrorHandler)(() => this.api.get(`/fee-estimates`));
+        });
+    }
+}
+exports.FeeApi = FeeApi;
